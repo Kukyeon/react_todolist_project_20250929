@@ -46,11 +46,27 @@ function App() {
 
   }
 
+  function onUpdate(targetId){
+    setTodo(
+    todo.map((it) =>{
+      
+      if(it.id === targetId){ 
+  // 할일 아이템을 반복하다가 들어온 targetId와 현재 읽고있는 글의 아이템의 id와 일치하면 참
+        return{
+          ...it, isDone: !it.isDone
+        };
+      }else{
+        return it;
+      }
+    }));
+  }
+
+
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate={onCreate}/>
-      <TodoList todo={todo} />
+      <TodoList todo={todo} onUpdate={onUpdate}/>
     </div>
   );
 }

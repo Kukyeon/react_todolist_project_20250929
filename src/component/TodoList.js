@@ -3,7 +3,7 @@ import { useState } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
 
-function TodoList({todo}){
+function TodoList({todo, onUpdate}){
 
     const [search, setSearch] = useState("");
 
@@ -31,7 +31,7 @@ function TodoList({todo}){
             <div className="list_wrapper">   
                 {/* todo item을 반복해서 출력 */}
                 {getSearchResult().map((it) => (
-                    <TodoItem key={it.id}{...it}/>
+                    <TodoItem key={it.id}{...it} onUpdate={onUpdate}/>
                 ))}
             </div>
         </div>
