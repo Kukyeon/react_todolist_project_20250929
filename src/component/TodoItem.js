@@ -1,11 +1,16 @@
 import "./TodoItem.css";
 
 
-function TodoItem({id, content, isDone , createDate , onUpdate}){
+function TodoItem({id, content, isDone , createDate , onUpdate, onDelete}){
 
     function onChangeCheckbox(){
         onUpdate(id);
     }
+
+    function onClickDelete(){
+        onDelete(id);
+    }
+
 
     return(
         <div className="TodoItem">
@@ -15,7 +20,7 @@ function TodoItem({id, content, isDone , createDate , onUpdate}){
             <div className="title_col">{content}</div>
             <div className="date_col">{new Date().toDateString()}</div>
             <div className="btn_col">
-                <button>삭제</button>
+                <button onClick={onClickDelete}>삭제</button>
             </div>
         </div>
     );
