@@ -1,4 +1,5 @@
 
+import { type } from '@testing-library/user-event/dist/type';
 import './App.css';
 import Header from './component/Header';
 import TodoEditor from './component/TodoEditor';
@@ -10,7 +11,11 @@ function reducer(state, action){
   switch (action.type) {
     case "CREATE":
       {return [action.newItem, ...state]}
-      
+    
+    case "UPDATE":
+      {return state.map((item) => 
+        item.id === action.targetId ? {...item, isDone:!item.isDone} : item
+      )}
   
     default:
       return state;
@@ -60,7 +65,10 @@ function App() {
   };
 
   function onUpdate(targetId){
-   
+    dispatch({
+      type:"UPDATE",
+      targetId:targetId
+    });
   }
 
   function onDelete(targetId){
