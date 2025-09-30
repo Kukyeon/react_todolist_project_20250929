@@ -3,7 +3,12 @@ import './App.css';
 import Header from './component/Header';
 import TodoEditor from './component/TodoEditor';
 import TodoList from './component/TodoList';
-import { useRef,  useReducer, useCallback } from 'react';
+import React, { useRef,  useReducer, useCallback, useMemo } from 'react';
+
+export const TodoStateContext = React.createContext(); //context 생성
+
+export const TodoDispatchContext = React.createContext();
+
 
 function reducer(state, action){
   
@@ -80,13 +85,24 @@ function App() {
     });
   },[]);
 
+
+  const memoizedDispatches = useMemo(() => {
+    return {onCreate, onDelete, onUpdate};
+  }, []);
+
+
   return (
     <div className="App">
       <Header />
-      <TodoEditor onCreate={onCreate}/>
-      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
+      <TodoStateContext.Provider value={todo}>
+        <TodoDispatchContext.Provider value={memoizedDispatches}>
+          <TodoEditor />
+          <TodoList />
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
     </div>
   );
 }
 
 export default App;
+

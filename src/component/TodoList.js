@@ -1,10 +1,12 @@
-
-import { useState , useMemo } from "react";
+import { TodoStateContext } from "../App2";
+import {useContext, useState , useMemo } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
 
-function TodoList({todo, onUpdate, onDelete}){
+function TodoList(){
 
+    const todo = useContext(TodoStateContext);
+    
     const [search, setSearch] = useState("");
 
     function onChangeSearch(e){
@@ -62,7 +64,7 @@ function TodoList({todo, onUpdate, onDelete}){
             <div className="list_wrapper">   
                 {/* todo item을 반복해서 출력 */}
                 {getSearchResult().map((it) => (
-                    <TodoItem key={it.id}{...it} onUpdate={onUpdate} onDelete={onDelete}/>
+                    <TodoItem key={it.id}{...it} />
                 ))}
             </div>
         </div>
