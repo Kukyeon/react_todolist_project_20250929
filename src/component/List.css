@@ -1,0 +1,11 @@
+.List {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.List th,
+.List td{
+    border: 1px solid gray;
+    padding: 8px;
+}

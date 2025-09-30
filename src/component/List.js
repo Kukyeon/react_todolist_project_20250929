@@ -1,5 +1,5 @@
 import Item from "./Item";
-
+import "./List.css";
 
 function List({todo,onUpdate, onDelete}){
 

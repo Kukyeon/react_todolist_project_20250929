@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Editor.css";
 
 
 function Editor({onCreate}){

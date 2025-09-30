@@ -1,0 +1,12 @@
+.Item td {
+    text-align: center;
+}
+
+.Item button:hover {
+    background-color: aqua;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 5px;
+}

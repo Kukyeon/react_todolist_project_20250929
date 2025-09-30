@@ -1,0 +1,17 @@
+.editor_wrapper input{
+    display: flex;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.editor_wrapper input{
+    flex: 1;
+    padding: 6px;
+}
+
+.editor_wrapper input button{
+    
+    padding: 6px 10px;
+    cursor: pointer;
+}
+

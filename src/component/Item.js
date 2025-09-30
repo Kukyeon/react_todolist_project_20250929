@@ -1,4 +1,4 @@
-
+import "./Item.css"
 
 
 function Item({id, onDelete, to}){
