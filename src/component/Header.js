@@ -1,3 +1,5 @@
+import React from "react";
+
 function Header() {
     return(
         <div className="Header">
@@ -7,4 +9,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default React.memo(Header);

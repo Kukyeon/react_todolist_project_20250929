@@ -1,3 +1,4 @@
+import React from "react";
 import "./TodoItem.css";
 
 
@@ -26,4 +27,4 @@ function TodoItem({id, content, isDone , createDate , onUpdate, onDelete}){
     );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);
