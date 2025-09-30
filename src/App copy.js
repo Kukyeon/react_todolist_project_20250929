@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import Editor from './component/Editor';
 import List from './component/List';
 import './Appcopy.css';
+import TestComp from './component/TestComp';
 
 function App() {
 
@@ -50,6 +51,8 @@ function App() {
     <div className="App">
       <Editor onCreate={onCreate}/>
       <List todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
+      <hr></hr>
+      <TestComp />
     </div>
   );
 }
