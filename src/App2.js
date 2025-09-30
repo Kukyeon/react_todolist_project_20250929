@@ -1,10 +1,9 @@
 
-import { type } from '@testing-library/user-event/dist/type';
 import './App.css';
 import Header from './component/Header';
 import TodoEditor from './component/TodoEditor';
 import TodoList from './component/TodoList';
-import { useRef, useState , useReducer } from 'react';
+import { useRef,  useReducer } from 'react';
 
 function reducer(state, action){
   
@@ -16,8 +15,11 @@ function reducer(state, action){
       {return state.map((item) => 
         item.id === action.targetId ? {...item, isDone:!item.isDone} : item
       )}
-  
-    default:
+    
+    case "DELETE":
+      {return state.filter((item) => item.id !== action.targetId)}
+
+      default:
       return state;
   }
 };
@@ -72,7 +74,10 @@ function App() {
   }
 
   function onDelete(targetId){
-    
+    dispatch({
+      type:"DELETE",
+      targetId:targetId
+    });
   }
 
   return (
