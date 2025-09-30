@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState , useMemo } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
 
@@ -24,9 +24,40 @@ function TodoList({todo, onUpdate, onDelete}){
         }
     }
 
+    // function analyzeTodo(){
+    //     //모든 할일의 갯수를 출력
+    //     const totalCount = todo.length;
+
+    //     //완료된 할일의 갯수
+    //     const doneConut = todo.filter((item) => item.isDone).length
+
+    //     //완료하지 못한 할일의 갯수
+    //     const notDoneConut = totalCount - doneConut;
+    //     return {totalCount, doneConut ,notDoneConut}
+    // };
+
+    const analyzeTodo = useMemo(()=>{
+         //모든 할일의 갯수를 출력
+        const totalCount = todo.length;
+
+        //완료된 할일의 갯수
+        const doneConut = todo.filter((item) => item.isDone).length
+
+        //완료하지 못한 할일의 갯수
+        const notDoneConut = totalCount - doneConut;
+        return {totalCount, doneConut ,notDoneConut}
+    }, [todo]);
+
+    const {totalCount, doneConut, notDoneConut} = analyzeTodo;
+
     return(
         <div className="TodoList">
             <h4>Todo List📝</h4>
+            <div>
+                <div>총 갯수 : {totalCount}</div>
+                <div>완료된 할일 : {doneConut}</div>
+                <div>미완료 할일 : {notDoneConut}</div>
+            </div>
             <input className="searchbar" value={search} onChange={onChangeSearch} placeholder="검색어를 입력하세요"/>
             <div className="list_wrapper">   
                 {/* todo item을 반복해서 출력 */}
